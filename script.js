@@ -64,7 +64,10 @@ const buttonEventHandlers = {
           }
           break;
         case '.':
-          if (currentCalculation[currentCalculation.length - 1] === String(Number(currentCalculation[currentCalculation.length - 1]))) {
+          if (currentCalculation.length === 0 || operators.includes(currentCalculation[currentCalculation.length - 1])) {
+            currentCalculation.push('0.');
+          }
+          if (!operators.includes(value) && !currentCalculation[currentCalculation.length - 1].split('').includes(value)) {
             currentCalculation[currentCalculation.length - 1] += value;
           }
           break;
@@ -82,7 +85,7 @@ const buttonEventHandlers = {
         case '/':
           currentCalculation.forEach(el => {
             if (operators.includes(el)) {
-              let newCalculation = calculator.operate(el, currentCalculation[0], currentCalculation[currentCalculation.length - 1]).toFixed(2);
+              let newCalculation = parseFloat(calculator.operate(el, currentCalculation[0], currentCalculation[currentCalculation.length - 1]).toFixed(2));
 
               while (currentCalculation.length > 0) currentCalculation.pop();
               currentCalculation.push(newCalculation, value);
@@ -96,7 +99,7 @@ const buttonEventHandlers = {
         case '=':
           if (currentCalculation.length === 3) {
             let [operand1, operator, operand2] = currentCalculation;
-            let newCalculation = calculator.operate(operator, operand1, operand2).toFixed(2);
+            let newCalculation = parseFloat(calculator.operate(operator, operand1, operand2).toFixed(2));
 
             while (currentCalculation.length > 0) currentCalculation.pop();
             currentCalculation.push(String(newCalculation));
