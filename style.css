@@ -1,4 +1,45 @@
 body {
   margin: 0;
   padding: 0;
+  display: flex;
+  justify-content: center;
+}
+
+#calculator-container{
+  width: 300px;
+  margin-top: 100px;
+  padding: 40px 30px;
+  background: #222;
+  border: 1px solid #ccc;
+  border-radius: 10px;
+}
+
+#calculator-display {
+  height: 75px;
+  background: #fff;
+  border: 1px solid #ccc;
+}
+
+#calculator-body {
+  display: flex;
+}
+
+#calculator-body .btn-col {
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+}
+
+#calculator-body .btn-col button {
+  width: 75px;
+  height: 75px;
+  font-weight: 800;
+  color: #fff;
+  background: #333;
+  cursor: pointer;
+}
+
+#calculator-body .btn-col .btn-tall {
+  height: 150px;
+  background: orange;
 }
