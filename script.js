@@ -68,6 +68,14 @@ const buttonEventHandlers = {
             currentCalculation[currentCalculation.length - 1] += value;
           }
           break;
+        case '+/-':
+          if (currentCalculation[currentCalculation.length - 1] === String(Number(currentCalculation[currentCalculation.length - 1]))) {
+            let modifiedValue = currentCalculation[currentCalculation.length - 1];
+
+            if (modifiedValue > 0) currentCalculation[currentCalculation.length - 1] = String(modifiedValue - (modifiedValue * 2));
+            if (modifiedValue < 0) currentCalculation[currentCalculation.length - 1] = String(Math.abs(modifiedValue));
+          }
+          break;
         case '+':
         case '-':
         case 'x':
@@ -93,10 +101,10 @@ const buttonEventHandlers = {
             while (currentCalculation.length > 0) currentCalculation.pop();
             currentCalculation.push(String(newCalculation));
           }
-      }
-
-      calcDisplay.textContent = currentCalculation.join(' ');
-      if (currentCalculation.length === 0) calcDisplay.textContent = '0';
+        }
+        
+        calcDisplay.textContent = currentCalculation.join(' ');
+        if (currentCalculation.length === 0) calcDisplay.textContent = '0';
     }));
   },
 }
