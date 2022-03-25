@@ -63,13 +63,18 @@ const buttonEventHandlers = {
             currentCalculation[currentCalculation.length - 1] += value;
           }
           break;
+        case '.':
+          if (currentCalculation[currentCalculation.length - 1] === String(Number(currentCalculation[currentCalculation.length - 1]))) {
+            currentCalculation[currentCalculation.length - 1] += value;
+          }
+          break;
         case '+':
         case '-':
         case 'x':
         case '/':
           currentCalculation.forEach(el => {
             if (operators.includes(el)) {
-              let newCalculation = calculator.operate(el, currentCalculation[0], currentCalculation[currentCalculation.length - 1]);
+              let newCalculation = calculator.operate(el, currentCalculation[0], currentCalculation[currentCalculation.length - 1]).toFixed(2);
 
               while (currentCalculation.length > 0) currentCalculation.pop();
               currentCalculation.push(newCalculation, value);
@@ -83,7 +88,7 @@ const buttonEventHandlers = {
         case '=':
           if (currentCalculation.length === 3) {
             let [operand1, operator, operand2] = currentCalculation;
-            let newCalculation = calculator.operate(operator, operand1, operand2);
+            let newCalculation = calculator.operate(operator, operand1, operand2).toFixed(2);
 
             while (currentCalculation.length > 0) currentCalculation.pop();
             currentCalculation.push(String(newCalculation));
