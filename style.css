@@ -14,10 +14,18 @@ body {
   border-radius: 10px;
 }
 
-#calculator-display {
+#calculator-display-container {
   height: 75px;
+  text-align: right;
   background: #fff;
   border: 1px solid #ccc;
+}
+
+#calculator-display {
+  margin: 0;
+  padding: 20px 15px;
+  font-size: 32px;
+  font-weight: 800;
 }
 
 #calculator-body {
